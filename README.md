@@ -83,10 +83,10 @@ Exactly-5-letters keeps rules and UX crystal-clear while still allowing multiple
 
 ---
 
-**Sample outputs:**
-# New round
+# Sample outputs: 
+**New round**
 curl -s -X POST http://localhost:8000/api/game/new | jq
-# Guess
+**Guess**
 curl -s -X POST http://localhost:8000/api/game/guess \
   -H 'Content-Type: application/json' \
   -d '{"session_id":"<SID>","guess":"stare"}' | jq
