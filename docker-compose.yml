@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  vllm:
+    image: vllm/vllm-openai:latest
+    # GPU path (best): uncomment the next line if you have an NVIDIA GPU
+    # deploy: { resources: { reservations: { devices: [ { capabilities: [gpu] } ] } } }
+    # Or with docker CLI: add --gpus all
+    command: >
+      --model TinyLlama/TinyLlama-1.1B-Chat-v1.0
+      --download-dir /models
+      --host 0.0.0.0 --port 8001
+    environment:
+      - HF_TOKEN=${HF_TOKEN}   # set your HF token in a .env file
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./models:/models
+
+  game:
+    build: ./game-api
+    environment:
+      - VLLM_BASE_URL=http://vllm:8001/v1
+      - VLLM_API_KEY=EMPTY
+      - LIMIT_VOCAB=50000
+      - MIN_ZIPF=3.4
+    ports:
+      - "8000:8000"
+    depends_on:
+      - vllm
