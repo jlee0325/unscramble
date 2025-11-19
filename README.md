@@ -41,12 +41,11 @@ A tiny, containerized Flask app. Each round gives you **exactly five letters**. 
 
 ## 3) How to Run (Local)
 
-- **Docker**
-# single command (uses docker-compose.yml and .env)
-docker compose up --build
-# UI: http://localhost:8000
-# Health (optional):
-curl http://localhost:8000/health
+- **Docker** single command (uses docker-compose.yml and .env)
+- docker compose up --build
+- UI: http://localhost:8000
+- **Health (optional)**:
+- curl http://localhost:8000/health
 
 ---
 
@@ -80,7 +79,9 @@ Exactly-5-letters keeps rules and UX crystal-clear while still allowing multiple
 
 **Screenshots (place in `/assets` and embed):**  
 ![Frontend](assets/frontend.png)  
-![Active-Round](assets/active-round-with-found-word.png)
+![Active-Round](assets/active.png)
+
+---
 
 **Sample outputs:**
 # New round
@@ -90,7 +91,7 @@ curl -s -X POST http://localhost:8000/api/game/guess \
   -H 'Content-Type: application/json' \
   -d '{"session_id":"<SID>","guess":"stare"}' | jq
 
-
+---
 
 **Performance footprint:**
 - Game container: lightweight (Flask + `wordfreq`).
