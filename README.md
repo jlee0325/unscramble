@@ -21,7 +21,7 @@ A tiny, containerized Flask app. Each round gives you **exactly five letters**. 
 - Data filtering with frequency thresholds (Zipf) using `wordfreq`
 
 **Architecture Diagram:**  
-![Architecture Diagram](assets/architecture.png)
+![Architecture Diagram](assets/Architecture.png)
 
 **Data / Models / Services:**
 - **Dictionary:** `wordfreq` top-N English words, filtered to 5 letters, Zipf ≥ 3.4  
